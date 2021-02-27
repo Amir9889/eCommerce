@@ -88,10 +88,10 @@ public class RegisterActivity extends AppCompatActivity {
                                     if (task.isSuccessful()){
                                         Toast.makeText(RegisterActivity.this, "Congratulations, your account has been created.", Toast.LENGTH_SHORT).show();
                                         loadingBar.dismiss();
+                                        LoginActivity.autoCompleteEditTexts(phone, password);
                                         Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                                        intent.putExtra("PHONE", phone);
-                                        intent.putExtra("PASSWORD", password);
                                         startActivity(intent);
+                                        finish();
                                     }else {
                                         loadingBar.dismiss();
                                         Toast.makeText(RegisterActivity.this, "Network Error: Please try again after some time...", Toast.LENGTH_SHORT).show();
@@ -100,7 +100,7 @@ public class RegisterActivity extends AppCompatActivity {
                             });
                 }else {
                     // This phone number is already registered.
-                    Toast.makeText(RegisterActivity.this, "This" + phone + "already exists.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegisterActivity.this, "This " + phone + " already exists.", Toast.LENGTH_SHORT).show();
                     loadingBar.dismiss();
                     Toast.makeText(RegisterActivity.this, "PLease try again using another phone number!", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
@@ -116,7 +116,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void initializeUIElements() {
-        createAccountBtn = findViewById(R.id.register_btn);
+        createAccountBtn = findViewById(R.id.login_btn);
         edtName = findViewById(R.id.register_username);
         edtPhone = findViewById(R.id.login_edt_phone_number);
         edtPassword = findViewById(R.id.login_edt_password);

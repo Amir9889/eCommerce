@@ -37,6 +37,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void initializeUIElements() {
         joinNowBtn = findViewById(R.id.main_join_now_btn);
-        loginBtn = findViewById(R.id.register_btn);
+        loginBtn = findViewById(R.id.login_btn);
     }
 }

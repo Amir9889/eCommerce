@@ -65,7 +65,7 @@
             android:id="@+id/remember_me"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@id/register_btn"
+            android:layout_above="@id/login_btn"
             style="@style/Material.Drawable.CheckBox"
             android:text="@string/remember_me"
             android:textAllCaps="false"
@@ -93,7 +93,7 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:fontFamily="@font/lily_script_one"
-        android:id="@+id/register_btn"
+        android:id="@+id/login_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@id/admin_panel"
