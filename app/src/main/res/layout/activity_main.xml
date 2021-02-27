@@ -39,7 +39,7 @@
         android:textStyle="italic" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/login_btn"
+        android:id="@+id/register_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -58,7 +58,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="6dp"
-        android:layout_above="@id/login_btn"
+        android:layout_above="@id/register_btn"
         android:layout_marginHorizontal="16dp"
         android:background="@drawable/input_design"
         android:padding="8dp"

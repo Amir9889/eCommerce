@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/register"
+    tools:context=".RegisterActivity">
+
+    <ImageView
+        android:contentDescription="@string/todo"
+        android:background="#000000"
+        android:alpha="0.7"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <ImageView
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="200dp"
+        android:contentDescription="@string/todo"
+        android:id="@+id/register_app_logo"
+        android:src="@drawable/applogo"
+        android:layout_width="250dp"
+        android:layout_height="100dp" />
+
+    <EditText
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/lily_script_one"
+        android:id="@+id/register_username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/register_app_logo"
+        android:background="@drawable/input_design"
+        android:padding="12dp"
+        android:layout_marginHorizontal="16dp"
+        android:hint="@string/edt_name"
+        android:inputType="textPersonName"
+        android:textColor="@color/colorPrimary"
+        android:textColorHint="@color/colorPrimary"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:autofillHints="@string/todo" />
+
+    <EditText
+        android:fontFamily="@font/lily_script_one"
+        android:id="@+id/register_edt_phone_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/register_username"
+        android:background="@drawable/input_design"
+        android:padding="12dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginHorizontal="16dp"
+        android:hint="@string/edt_phone"
+        android:inputType="phone"
+        android:textColor="@color/colorPrimary"
+        android:textColorHint="@color/colorPrimary"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:autofillHints="@string/todo" />
+
+    <EditText
+        android:fontFamily="@font/lily_script_one"
+        android:id="@+id/register_edt_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/register_edt_phone_number"
+        android:background="@drawable/input_design"
+        android:padding="12dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="8dp"
+        android:hint="@string/edt_password"
+        android:inputType="textPassword"
+        android:textColor="@color/colorPrimary"
+        android:textColorHint="@color/colorPrimary"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:autofillHints="@string/todo" />
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:fontFamily="@font/lily_script_one"
+        android:id="@+id/register_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="16dp"
+        android:layout_marginHorizontal="16dp"
+        android:background="@drawable/buttons"
+        android:padding="12dp"
+        android:textAllCaps="false"
+        android:textSize="16sp"
+        android:text="Creating An Account"
+        android:textColor="@android:color/white"/>
+
+
+</RelativeLayout>

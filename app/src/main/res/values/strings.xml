@@ -6,4 +6,5 @@
     <string name="edt_password">Password</string>
     <string name="remember_me">Remember Me</string>
     <string name="forget_password">Forget Password?</string>
+    <string name="edt_name">Name</string>
 </resources>
