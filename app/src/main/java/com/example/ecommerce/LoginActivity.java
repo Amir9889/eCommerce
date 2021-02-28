@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.ecommerce.Model.User;
@@ -30,7 +31,8 @@ public class LoginActivity extends AppCompatActivity {
     private AppCompatButton loginBtn;
     private ProgressDialog loadingBar;
     private CheckBox rememberMe;
-    private final static String parentDBName = "Users";
+    private TextView adminLink, notAdminLink;
+    private static String parentDBName = "Users";
 
     public static void autoCompleteEditTexts(String phone, String password) {
         LoginActivity loginActivity = new LoginActivity();
@@ -52,6 +54,26 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 loginUser();
+            }
+        });
+
+        adminLink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loginBtn.setText("Login Admin");
+                adminLink.setVisibility(View.INVISIBLE);
+                notAdminLink.setVisibility(View.VISIBLE);
+                parentDBName = "Admins";
+            }
+        });
+
+        notAdminLink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loginBtn.setText("Login");
+                adminLink.setVisibility(View.VISIBLE);
+                notAdminLink.setVisibility(View.INVISIBLE);
+                parentDBName = "Users";
             }
         });
 
@@ -91,11 +113,21 @@ public class LoginActivity extends AppCompatActivity {
                     User userData = snapshot.child(parentDBName).child(phone).getValue(User.class);
                     if (userData.getPhone().equals(phone)){
                         if (userData.getPassword().equals(password)){
-                            // Allow user to login
-                            Toast.makeText(LoginActivity.this, "Logged in successfully.", Toast.LENGTH_SHORT).show();
-                            loadingBar.dismiss();
-                            Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-                            startActivity(intent);
+                            // Specify the client is an admin or a client
+                            if (parentDBName.equals("Admins")){
+                                // The client is an admin
+                                Toast.makeText(LoginActivity.this, "Welcome admin, you are logged in successfully.", Toast.LENGTH_SHORT).show();
+                                loadingBar.dismiss();
+                                Intent intent = new Intent(getApplicationContext(), AdminAddNewProductActivity.class);
+                                startActivity(intent);
+                            }else if (parentDBName.equals("Users")){
+                                // The client is a user
+                                Toast.makeText(LoginActivity.this, "Logged in successfully.", Toast.LENGTH_SHORT).show();
+                                loadingBar.dismiss();
+                                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                                startActivity(intent);
+                            }
+
                         }else {
                             // Wrong password
                             edtPassword.setError("Wrong password.");
@@ -126,5 +158,7 @@ public class LoginActivity extends AppCompatActivity {
         loginBtn = findViewById(R.id.login_btn);
         loadingBar = new ProgressDialog(this);
         rememberMe = findViewById(R.id.remember_me);
+        adminLink = findViewById(R.id.admin_panel);
+        notAdminLink = findViewById(R.id.not_admin_panel);
     }
 }
