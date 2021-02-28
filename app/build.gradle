@@ -42,6 +42,7 @@ dependencies {
     implementation platform('com.google.firebase:firebase-bom:26.5.0')
     implementation 'com.google.firebase:firebase-database'
     implementation 'com.google.firebase:firebase-analytics'
+    implementation 'io.paperdb:paperdb:2.7.1'
 }
 
 apply plugin: 'com.google.gms.google-services'

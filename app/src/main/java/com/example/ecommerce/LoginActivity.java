@@ -6,6 +6,7 @@ import androidx.appcompat.widget.AppCompatButton;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.icu.util.LocaleData;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -13,17 +14,22 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.ecommerce.Model.User;
+import com.example.ecommerce.Prevalent.Prevalent;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.rey.material.widget.CheckBox;
+
+import io.paperdb.Paper;
 
 public class LoginActivity extends AppCompatActivity {
 
     private EditText edtPhone, edtPassword;
     private AppCompatButton loginBtn;
     private ProgressDialog loadingBar;
+    private CheckBox rememberMe;
     private final static String parentDBName = "Users";
 
     public static void autoCompleteEditTexts(String phone, String password) {
@@ -39,6 +45,8 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         initializeUIElements();
+
+        Paper.init(this);
 
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,6 +76,12 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void allowAccessToAccount(String phone, String password) {
+
+        if (rememberMe.isChecked()){
+            Paper.book().write(Prevalent.UserPhoneKey, phone);
+            Paper.book().write(Prevalent.UserPassword, password);
+        }
+
         final DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
         rootRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -111,5 +125,6 @@ public class LoginActivity extends AppCompatActivity {
         edtPassword = findViewById(R.id.login_edt_password);
         loginBtn = findViewById(R.id.login_btn);
         loadingBar = new ProgressDialog(this);
+        rememberMe = findViewById(R.id.remember_me);
     }
 }
