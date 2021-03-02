@@ -3,13 +3,18 @@ package com.example.ecommerce;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.core.content.res.ResourcesCompat;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.icu.util.LocaleData;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -118,14 +123,16 @@ public class LoginActivity extends AppCompatActivity {
                                 // The client is an admin
                                 Toast.makeText(LoginActivity.this, "Welcome admin, you are logged in successfully.", Toast.LENGTH_SHORT).show();
                                 loadingBar.dismiss();
-                                Intent intent = new Intent(getApplicationContext(), AdminAddNewProductActivity.class);
+                                Intent intent = new Intent(getApplicationContext(), AdminCategoryActivity.class);
                                 startActivity(intent);
+                                finish();
                             }else if (parentDBName.equals("Users")){
                                 // The client is a user
                                 Toast.makeText(LoginActivity.this, "Logged in successfully.", Toast.LENGTH_SHORT).show();
                                 loadingBar.dismiss();
                                 Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                                 startActivity(intent);
+                                finish();
                             }
 
                         }else {
