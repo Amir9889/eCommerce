@@ -147,7 +147,7 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 }else {
                     // Please create an account
-                    Toast.makeText(LoginActivity.this, "Account whit this " + phone + " number don't exist!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Account with this " + phone + " number don't exist!", Toast.LENGTH_SHORT).show();
                     loadingBar.dismiss();
                 }
             }
