@@ -19,6 +19,7 @@
         android:layout_marginHorizontal="32dp" />
 
     <EditText
+        android:maxLines="2"
         android:background="@drawable/input_design"
         android:id="@+id/product_name"
         android:layout_width="match_parent"
@@ -32,6 +33,7 @@
         android:layout_marginHorizontal="32dp"/>
 
     <EditText
+        android:maxLines="3"
         android:background="@drawable/input_design"
         android:id="@+id/product_desc"
         android:layout_width="match_parent"
@@ -45,6 +47,7 @@
         android:layout_marginHorizontal="32dp"/>
 
     <EditText
+        android:maxLines="1"
         android:background="@drawable/input_design"
         android:id="@+id/product_price"
         android:layout_width="match_parent"
