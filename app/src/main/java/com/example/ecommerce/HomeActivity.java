@@ -2,10 +2,14 @@ package com.example.ecommerce;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.ecommerce.Prevalent.Prevalent;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
@@ -21,10 +25,13 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import io.paperdb.Paper;
 
 public class HomeActivity extends AppCompatActivity
     implements NavigationView.OnNavigationItemSelectedListener {
+
+    private String currentUserName = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +62,18 @@ public class HomeActivity extends AppCompatActivity
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        View headerView = navigationView.getHeaderView(0);
+        TextView userNameTxt = headerView.findViewById(R.id.user_profile_name);
+        CircleImageView userProfileImage = headerView.findViewById(R.id.user_profile_image);
+        currentUserName = Paper.book().read(Prevalent.userName);
+        userNameTxt.setText(currentUserName);
+        /*if (TextUtils.isEmpty(currentUserName)){
+            Toast.makeText(this, "Current username is empty!", Toast.LENGTH_SHORT).show();
+        }else {
+            userNameTxt.setText(currentUserName);
+        }*/
+
     }
 
     @Override

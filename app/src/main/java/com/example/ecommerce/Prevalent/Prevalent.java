@@ -4,7 +4,9 @@ import com.example.ecommerce.Model.User;
 
 public class Prevalent {
 
-    private static User currentOnlineUser;
+    public static User currentOnlineUser;
+
+    public static final String userName = "UserName";
 
     public static final String UserPhoneKey = "UserPhone";
 
