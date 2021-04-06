@@ -7,6 +7,7 @@ import androidx.core.content.res.ResourcesCompat;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.icu.util.LocaleData;
@@ -28,6 +29,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.rey.material.widget.CheckBox;
 
+import io.github.inflationx.viewpump.ViewPumpContextWrapper;
 import io.paperdb.Paper;
 
 public class LoginActivity extends AppCompatActivity {
@@ -170,4 +172,10 @@ public class LoginActivity extends AppCompatActivity {
         adminLink = findViewById(R.id.admin_panel);
         notAdminLink = findViewById(R.id.not_admin_panel);
     }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(ViewPumpContextWrapper.wrap(newBase));
+    }
+
 }

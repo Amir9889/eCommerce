@@ -2,10 +2,13 @@ package com.example.ecommerce;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+
+import io.github.inflationx.viewpump.ViewPumpContextWrapper;
 
 public class AdminCategoryActivity extends AppCompatActivity {
 
@@ -90,4 +93,10 @@ public class AdminCategoryActivity extends AppCompatActivity {
 
         startActivity(intent);
     }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(ViewPumpContextWrapper.wrap(newBase));
+    }
+
 }

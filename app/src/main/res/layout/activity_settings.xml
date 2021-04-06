@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SettingsActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar_settings"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorPrimary">
+
+        <androidx.appcompat.widget.Toolbar
+            android:paddingHorizontal="16dp"
+            app:contentInsetStart="0dp"
+            android:id="@+id/toolbar_settings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/close_settings"
+                    android:layout_alignParentStart="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Close"
+                    android:textSize="18sp"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/update_settings"
+                    android:layout_alignParentEnd="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Close"
+                    android:textSize="18sp"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold" />
+
+            </RelativeLayout>
+
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/pro_image_settings"
+        android:layout_width="124dp"
+        android:layout_height="124dp"
+        android:src="@drawable/profile"
+        android:layout_below="@id/app_bar_settings"
+        android:layout_marginTop="18dp"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/pro_image_change_txt"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/pro_image_settings"
+        android:layout_marginTop="4dp"
+        android:text="Change Image"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/phone_edt_settings"
+        android:paddingHorizontal="8dp"
+        android:paddingVertical="12dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Phone Number..."
+        android:layout_below="@id/pro_image_change_txt"
+        android:layout_marginTop="16dp"
+        android:layout_marginHorizontal="16dp"
+        android:autofillHints="@string/todo"
+        android:inputType="phone" />
+
+    <EditText
+        android:id="@+id/full_name_edt_settings"
+        android:paddingHorizontal="8dp"
+        android:paddingVertical="12dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Full Name..."
+        android:layout_below="@id/phone_edt_settings"
+        android:layout_marginTop="16dp"
+        android:layout_marginHorizontal="16dp"
+        android:autofillHints="@string/todo"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/address_edt_settings"
+        android:paddingHorizontal="8dp"
+        android:paddingVertical="12dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Address..."
+        android:layout_below="@id/full_name_edt_settings"
+        android:layout_marginTop="16dp"
+        android:layout_marginHorizontal="16dp"
+        android:autofillHints="@string/todo"
+        android:inputType="textMultiLine" />
+
+</RelativeLayout>

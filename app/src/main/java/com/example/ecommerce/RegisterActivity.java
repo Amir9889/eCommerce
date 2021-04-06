@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -21,6 +22,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
+
+import io.github.inflationx.viewpump.ViewPumpContextWrapper;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -123,4 +126,10 @@ public class RegisterActivity extends AppCompatActivity {
         edtPassword = findViewById(R.id.login_edt_password);
         loadingBar = new ProgressDialog(this);
     }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(ViewPumpContextWrapper.wrap(newBase));
+    }
+
 }

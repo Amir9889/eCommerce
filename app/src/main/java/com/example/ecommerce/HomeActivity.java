@@ -1,7 +1,9 @@
 package com.example.ecommerce;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -37,6 +39,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import io.github.inflationx.viewpump.ViewPumpContextWrapper;
 import io.paperdb.Paper;
 
 public class HomeActivity extends AppCompatActivity
@@ -46,6 +49,7 @@ public class HomeActivity extends AppCompatActivity
     private DatabaseReference productReference;
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
+    private FirebaseRecyclerAdapter<Product, ProductViewHolder> adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,7 +110,7 @@ public class HomeActivity extends AppCompatActivity
                 .setQuery(productReference, Product.class)
                 .build();
 
-        FirebaseRecyclerAdapter<Product, ProductViewHolder> adapter =
+        adapter =
                 new FirebaseRecyclerAdapter<Product, ProductViewHolder>(options) {
                     @Override
                     protected void onBindViewHolder(@NonNull ProductViewHolder holder, int position, @NonNull Product model) {
@@ -127,6 +131,12 @@ public class HomeActivity extends AppCompatActivity
 
         recyclerView.setAdapter(adapter);
         adapter.startListening();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        adapter.stopListening();
     }
 
     @Override
@@ -151,6 +161,8 @@ public class HomeActivity extends AppCompatActivity
 
         int id = item.getItemId();
 
+        Intent intent = new Intent();
+
         if (id == R.id.nav_cart){
             // Navigate user to the CartActivity
         }else if (id == R.id.nav_orders){
@@ -159,15 +171,24 @@ public class HomeActivity extends AppCompatActivity
 
         }else if (id == R.id.nav_settings){
 
+            intent.setClass(HomeActivity.this, SettingsActivity.class);
+            startActivity(intent);
+
         }else if (id == R.id.nav_logout){
+
             Paper.book().destroy();
 
-            Intent intent = new Intent(HomeActivity.this, MainActivity.class);
+            intent.setClass(HomeActivity.this, MainActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
             finish();
         }
 
         return true;
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(ViewPumpContextWrapper.wrap(newBase));
     }
 }
