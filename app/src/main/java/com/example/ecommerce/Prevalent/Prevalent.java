@@ -6,8 +6,6 @@ public class Prevalent {
 
     public static User currentOnlineUser;
 
-    public static final String userName = "UserName";
-
     public static final String UserPhoneKey = "UserPhone";
 
     public static final String UserPassword = "UserPassword";

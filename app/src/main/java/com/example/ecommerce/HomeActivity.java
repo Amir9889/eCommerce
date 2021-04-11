@@ -86,13 +86,8 @@ public class HomeActivity extends AppCompatActivity
         View headerView = navigationView.getHeaderView(0);
         TextView userNameTxt = headerView.findViewById(R.id.user_profile_name);
         CircleImageView userProfileImage = headerView.findViewById(R.id.user_profile_image);
-        currentUserName = Paper.book().read(Prevalent.userName);
+        currentUserName = Prevalent.currentOnlineUser.getName();
         userNameTxt.setText(currentUserName);
-        /*if (TextUtils.isEmpty(currentUserName)){
-            Toast.makeText(this, "Current username is empty!", Toast.LENGTH_SHORT).show();
-        }else {
-            userNameTxt.setText(currentUserName);
-        }*/
 
         recyclerView = findViewById(R.id.recycler_menu);
         recyclerView.setHasFixedSize(true);
