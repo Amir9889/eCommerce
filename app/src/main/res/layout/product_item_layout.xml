@@ -54,6 +54,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/product_price"
             android:text="Product Description"
+            android:textAlignment="center"
             android:maxLines="4"
             android:layout_marginTop="4dp"
             android:paddingHorizontal="8dp"

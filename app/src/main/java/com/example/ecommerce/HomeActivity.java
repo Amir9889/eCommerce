@@ -88,6 +88,7 @@ public class HomeActivity extends AppCompatActivity
         CircleImageView userProfileImage = headerView.findViewById(R.id.user_profile_image);
         currentUserName = Prevalent.currentOnlineUser.getName();
         userNameTxt.setText(currentUserName);
+        Picasso.get().load(Prevalent.currentOnlineUser.getImage()).placeholder(R.drawable.profile).into(userProfileImage);
 
         recyclerView = findViewById(R.id.recycler_menu);
         recyclerView.setHasFixedSize(true);
@@ -111,7 +112,7 @@ public class HomeActivity extends AppCompatActivity
                     protected void onBindViewHolder(@NonNull ProductViewHolder holder, int position, @NonNull Product model) {
                         holder.txtProductName.setText(model.getpName());
                         holder.txtProductDesc.setText(model.getDescription());
-                        holder.txtProductPrice.setText("Price: " + model.getPrice() + "$");
+                        holder.txtProductPrice.setText("Price: $" + model.getPrice());
                         Picasso.get().load(model.getImage()).into(holder.productImage);
                     }
 
